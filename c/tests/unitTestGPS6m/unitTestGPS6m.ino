@@ -1,10 +1,10 @@
 
 #include <SoftwareSerial.h>
 
-SoftwareSerial ss(12, 14);
+SoftwareSerial ss(4, 3);
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   ss.begin(9600);
 }
 
