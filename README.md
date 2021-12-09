@@ -4,7 +4,7 @@
 
 First install the libraries required
 
-pip install paho-mqtt
+pip install paho-mqtt \n
 pip install mariadb
 
 #How to use
