@@ -34,7 +34,10 @@ class db:
         return all_rows
         print("\n".join(all_rows))
 
+    def write_to_db(self, payload):
+        self._cur.execute(f'')
 
+#Arbitrary change
 
 
 def main():
