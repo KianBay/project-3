@@ -18,7 +18,7 @@ def on_message(client, userdata, msg):
 
 
 
-database = db.db('root', 'newpass', 'measurements', 'temperature')
+database = db.db('root', 'newpass', 'project3', 'measure')
 #print(database.return_all())
 client = mqtt.Client()
 client.on_connect = on_connect

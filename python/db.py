@@ -38,14 +38,20 @@ class db:
     def write_to_db(self, table, payload):
         data = payload.split(' ')
         
-        self._cur.execute(f'INSERT INTO project3.{table}(temp,humi,light,loc)'
-                            'VALUES (?,?,?,?)',(data[0], data[1], data[2], data[3]))
+        temp = float(data[0][3:])
+        #temp = float(temp[3:])
+        humi = float(data[1][1:])
+        light = int(data[2][1:])
+        loc = data[3][0:-1]
+        self._cur.execute(f'INSERT INTO project3.{table}(location,temperature,humidity,lightIntensity)'
+                            'VALUES (?,?,?,?)',(loc, temp, humi, light))
+        print(data)
 
 
 def main():
     myDb = db('root', 'newpass', 'measurements', 'temperature')
     #myDb = db('root', 'newpass', '127.0.0.1', 3306, 'measurements')
-    myDb.return_all('temperature')
+    myDb.return_all()
 
 if __name__ == '__main__':
     main()
