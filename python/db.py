@@ -32,7 +32,7 @@ class db:
     def return_all(self, limit=100000):
         self._cur.execute(f'SELECT * FROM {self._table} LIMIT {limit}')
         all_rows = []
-        for (time, loc, temp, position, created) in self._cur:
+        for (id, time, loc, temp, position, created) in self._cur:
             all_rows.append(f'{loc}, {temp}, {position}, {created}')
         return all_rows
         print("\n".join(all_rows))
