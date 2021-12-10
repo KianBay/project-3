@@ -11,13 +11,14 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server
 def on_message(client, userdata, msg):
-    database.write_to_db('measures', str(msg.payload))
-    print(msg.topic+" "+str(msg.payload))
+    loc = msg.topic.split('/')[1]
+    database.write_to_db('measures', str(msg.payload), loc)
+    #print(msg.topic+" "+str(msg.payload))
 
         
 
 
-
+#Connect to the database with credentials, db name and table to use.
 database = db.db('root', 'newpass', 'project3', 'measure')
 #print(database.return_all())
 client = mqtt.Client()
