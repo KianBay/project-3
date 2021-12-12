@@ -8,6 +8,9 @@ pip install paho-mqtt
 
 pip install mariadb
 
+pip install pandas
+
+pip install plotly
 Then clone the repository (git clone <link>)
 #How to use
 

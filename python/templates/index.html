@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>List of Classrooms</h1>
+    <ul>
+        {% for i in range(0, len) %}
+        <li><h3><a href={{'graph/'+rooms[i]}}>{{ rooms[i] }}</a></h3></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

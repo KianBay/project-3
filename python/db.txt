@@ -1,0 +1,11 @@
+#For creating the database etc
+
+CREATE TABLE project3.measurements(
+    id int auto_increment not null,
+    ts TIMESTAMP,
+    location varchar(60),
+    temperature float,
+    humidity float,
+    lightIntensity int,
+    primary key id
+);
