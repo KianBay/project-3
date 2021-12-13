@@ -101,7 +101,8 @@ def main():
     #print(myDb.return_all())
     #myDb.db_to_df()
     #print(myDb.db_to_df())
-
+    df = myDb.db_mac_to_df('measurements', '04:8C:9A:2E:46:77')
+    print(df)
     #classrooms = myDb.get_unique_classrooms('locations', 'classroom')
     #print(type(classrooms))
     #locs = myDb.get_match_on_room('locations', 'a12.16')

@@ -7,5 +7,5 @@ CREATE TABLE project3.measurements(
     temperature float,
     humidity float,
     lightIntensity int,
-    primary key id
+    primary key (id)
 );
