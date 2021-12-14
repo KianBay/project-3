@@ -83,7 +83,7 @@ class db:
     def get_match_on_room(self, table, classroom):
         mac_adds = []
         #Needs quotes around the string for sql to interpret correctly; else it expects a column name
-        mac = self._cur.execute(f'SELECT mac FROM {table} WHERE classroom = "{classroom}"')
+        mac = self._cur.execute(f'SELECT MacAddress FROM {table} WHERE Classroom = "{classroom}"')
         for mac in self._cur:
             for i in mac:
                 mac_adds.append(i)

@@ -7,12 +7,12 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-myDb = db('root', 'newpass', 'project3', 'measurements')
+myDb = db('root', 'hackerman', 'project3', 'measurements')
 
 app = Flask(__name__)
 @app.route('/')
 def index():
-    rooms = myDb.get_unique_classrooms('locations', 'classroom')
+    rooms = myDb.get_unique_classrooms('location', 'Classroom')
     return render_template('index.html', len=len(rooms), rooms=rooms)
 
 @app.route('/graph/<classroom>')
@@ -26,7 +26,6 @@ def graph(classroom):
     fig.add_trace(go.Scatter(x=df['ts'], y=df['temperature'], name='Temperature', line=dict(color='Crimson')), secondary_y=False)
     fig.add_trace(go.Scatter(x=df['ts'], y=df['humidity'], name='Humidity', line=dict(color='CornflowerBlue')), secondary_y=False)
     fig.add_trace(go.Scatter(x=df['ts'], y=df['lightIntensity'], name='Light Intensity', line=dict(color='Burlywood')), secondary_y=True)
-
 
     fig.update_layout(title_text="The Holy Trifecta of Data") #Can add a ton of parameters here; height, width etc
 
@@ -43,7 +42,7 @@ def graph(classroom):
 
 if __name__ == '__main__':
 
-    app.run(port=4848, debug=True)
+    app.run(host='0.0.0.0', port=4848, debug=True)
 
 
 
