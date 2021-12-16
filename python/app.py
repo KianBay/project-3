@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-myDb = db('root', 'hackerman', 'project3', 'measurements')
+myDb = db('root', 'newpass', 'project3', 'measurements')
 
 app = Flask(__name__)
 @app.route('/')
@@ -17,7 +17,7 @@ def index():
 
 @app.route('/graph/<classroom>')
 def graph(classroom):
-    mac = myDb.get_match_on_room('locations', classroom)
+    mac = myDb.get_match_on_room('location', classroom)
     df = myDb.db_mac_to_df('measurements', mac)
 
 

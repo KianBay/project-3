@@ -1,12 +1,41 @@
 body{
-text-align:center;
-
-}
-
-h1{
-    color:green;
-}
-
-#returnblyat{
-    text-align:left;
-}
+    text-align:center;
+    /* background: linear-gradient(white , grey) !important; */
+    height: 100vh;
+    
+    }
+    
+    
+    
+    
+    h1{
+        color:#1976D2;
+    }
+    
+    #returnIndex{
+        text-align:left;
+    }
+    
+    .hover:hover{
+       background-color: #1976D2 !important;
+    
+    }
+    
+    .hover{
+        cursor:pointer;
+    }
+    
+    .hover > h3 {
+        color: #212121 ;
+    }
+    
+    
+    .group2{
+        position: absolute;
+        left:0;
+        top: 0;
+        font-weight: 700;
+        font-size: 40px;
+        
+    
+    }
