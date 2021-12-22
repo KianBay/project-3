@@ -1,4 +1,4 @@
-#For creating the database etc
+#For creating main db
 
 CREATE TABLE project3.measurements(
     id int auto_increment not null,
@@ -8,4 +8,12 @@ CREATE TABLE project3.measurements(
     humidity float,
     lightIntensity int,
     primary key (id)
+);
+
+#For creating secondary db
+
+CREATE TABLE project3.location(
+    MacAddress varchar(40),
+    Classroom varchar(40),
+    primary key (Classroom)
 );
