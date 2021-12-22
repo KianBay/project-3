@@ -1,20 +1,17 @@
 # project-3
 
-#How to install
+### How to install
 
-First install the libraries required
+Clone the repo. 
 
-pip install paho-mqtt
+Install the requirements,
+`pip install -r requirements.txt`
 
-pip install mariadb
 
-pip install pandas
+### How to use
 
-pip install plotly
-Then clone the repository (git clone <link>)
-#How to use
+For data collection,
+open the mqtt_fetch.py file and edit the credentials to fit your database
 
-Open the mqtt_fetch.py file and edit the credentials to fit your database
-Should also edit the mqtt host you connect to, check IP of the broker for this
+For displaying data/running webserver, run the app.py file
 
-Run the main.py file and enjoy mass data collection.
