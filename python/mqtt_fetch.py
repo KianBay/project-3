@@ -13,9 +13,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     loc = msg.topic.split('/')[1]
     database.write_to_db('measurements', str(msg.payload), loc)
-    #print(msg.topic+" "+str(msg.payload))
 
-        
 
 
 #Connect to the database with credentials, db name and table to use.

@@ -20,7 +20,6 @@ def graph(classroom):
     mac = myDb.get_match_on_room('location', classroom)
     df = myDb.db_mac_to_df('measurements', mac)
 
-
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig.add_trace(go.Scatter(x=df['ts'], y=df['temperature'], name='Temperature', line=dict(color='Crimson')), secondary_y=False)
@@ -31,14 +30,10 @@ def graph(classroom):
 
     header ='Sensor data for classroom ' + classroom
     description = 'The data is collected in a 5-minute interval in a static position in the given classroom.'
-    print('TESTTTT')
-    print(mac)
     #print(classroom)
     #graphJSON = fig.to_json()
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('graphing.html', graphJSON=graphJSON, header=header,description=description)
-
-#print(df)
 
 if __name__ == '__main__':
 

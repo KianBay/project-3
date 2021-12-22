@@ -3,6 +3,7 @@ import mariadb, sys
 import pandas as pd
 
 class db:
+    #Instantiate object with correct parameters!
     def __init__(self, user, psw, db, table):
         self._user = user
         self._psw = psw
@@ -28,8 +29,8 @@ class db:
             
         #Nicer looking cursor object for our use
         self._cur = self._conn.cursor()
-
-    #Returns the whole database, limited by default to latest 10000 entries
+    #Returns the whole database, limited by default to latest 10000 entries. 
+    #Method used only early on in development
     def return_all(self, limit=100000):
         self._cur.execute(f'SELECT * FROM {self._table} LIMIT {limit}')
         all_rows = []
@@ -38,13 +39,10 @@ class db:
         return all_rows
         print("\n".join(all_rows))
 
-    def return_all_by_loc(self, loc, limit=10000):
-        self._cur.execute(f'SELECT * FROM {self._table} WHERE location = {loc} LIMIT {limit}')
-
+    #VIF
     def write_to_db(self, table, payload, topicLoc):
         #Cleaning the string then splitting it on space character
         data = payload[2:-1].split(' ')
-
         #Each data point is now a member of the list, we assign each of these to a variables
         #While stripping the leading character like T for temperature
         temp = float(data[0][1:])
@@ -54,9 +52,9 @@ class db:
         self._cur.execute(f'INSERT INTO project3.{table}(location,temperature,humidity,lightIntensity)'
                             'VALUES (?,?,?,?)',(loc, temp, humi, light))
 
-    #Converting to a dataframe since it is much easier to graph from
-    def db_to_df(self):
 
+    #For testing and visualizing the dataframe
+    def db_to_df(self):
         self._df = pd.read_sql("SELECT * FROM measurements", self._conn)
         return self._df
 
@@ -68,16 +66,6 @@ class db:
             for i in classroom:
                 unique_classrooms.append(i)
         return unique_classrooms
-    """
-    def get_match_on_room(self, table, classroom):
-        mac_adds = []
-        #Needs quotes around the string for sql to interpret correctly; else it expects a column name
-        self._cur.execute(f'SELECT mac FROM {table} WHERE classroom = "{classroom}"')
-        for mac in self._cur:
-            for i in mac:
-                mac_adds.append(i)
-        return mac_adds
-"""
 
     #This function is used to get the mac address from a classroom id
     def get_match_on_room(self, table, classroom):
@@ -87,9 +75,9 @@ class db:
         for mac in self._cur:
             for i in mac:
                 mac_adds.append(i)
-        #Gives an IndexError saying list index is out of range, yet the list has 1 member and the first element is
-        #the one to be returned... Curious. It works though, but needs looking at!
+    #Due to some possible errors we grab the first member of the list. We could have done this in the tuple but this is more future proof
         return mac_adds[0]
+
     #This function is used for graphing the data based on the given mac address
     def db_mac_to_df(self, table, mac):
         self._df = pd.read_sql(f'SELECT * FROM {table} WHERE location = "{mac}"', self._conn)
